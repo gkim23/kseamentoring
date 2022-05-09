@@ -21,12 +21,10 @@ def animate_bloch(vector_array, name="bloch.mp4", fps_in=20):
     fig = plab.figure()
     ax = Axes3D(fig,azim=-40,elev=30)
     sphere = qt.Bloch(axes=ax)
-    b = qt.Bloch()
-    pt = [vector_array[0],vector_array[1],vector_array[2]]
-    b.add_vectors(pt)
+    points = [vector_array[0],vector_array[1],vector_array[2]]
 
     def ani(i):
-        sx, sy, sz = pt
+        sx, sy, sz = points
         sphere.clear()
         sphere.add_vectors([sx[i],sy[i],sz[i]])
         sphere.make_sphere()
@@ -37,6 +35,7 @@ def animate_bloch(vector_array, name="bloch.mp4", fps_in=20):
 
     ani = animation.FuncAnimation(fig, ani, np.arange(len(vector_array[0])), init_func=init, blit=False, repeat=False)
     ani.save(name, fps=fps_in)
+
 
 
 def driven_hamiltonian(omega, free_hamiltonian, qubit_x, qubit_y, plot=False):
