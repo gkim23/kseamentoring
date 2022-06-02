@@ -39,7 +39,7 @@ def animate_bloch(vector_array, name="bloch.mp4", fps_in=20):
 
 
 def driven_hamiltonian(omega, free_hamiltonian, qubit_x, qubit_y, plot=False):
-    tlist = np.linspace(0,len(omega),len(omega))
+    tlist = np.linspace(0,len(omega),len(omega)*10)
     qubit_I = np.real(omega) * 0.9582815089328248 / 2
     qubit_Q = np.imag(omega) * 0.9582815089328248 / 2
 
